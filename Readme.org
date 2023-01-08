@@ -1,0 +1,14 @@
+#+TITLE: org-caldav-autosync
+
+Autosync mode for [[https://github.com/dengste/org-caldav][org-caldav]].
+
+This package is currently in alpha state.
+
+To use the package, add it to your load-path, then do:
+
+#+begin_src emacs-lisp
+  (require 'org-caldav-autosync)
+  (org-caldav-autosync-mode)
+#+end_src
+
+Credit: Code was originally based on [[https://www.reddit.com/r/orgmode/comments/8rl8ep/comment/e0sb5j0/?utm_source=share&utm_medium=web2x&context=3][this Reddit comment]].
