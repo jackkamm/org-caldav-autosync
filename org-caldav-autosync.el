@@ -48,8 +48,13 @@ occurs."
   "The last time `org-caldav-sync' ran or was prompted to run.")
 
 (defun org-caldav-autosync-after-save-hook ()
-  (when (cl-some (lambda (x) (file-equal-p x (buffer-file-name)))
-                 (org-caldav-get-org-files-for-sync))
+  (when (cl-some (lambda (x) (when x (file-equal-p x (buffer-file-name))))
+                 (cl-loop for cal in (append `(:inbox ,org-caldav-inbox
+                                                      :files ,org-caldav-files)
+                                             org-caldav-calendars)
+                          append (cons (org-caldav-inbox-file
+                                        (plist-get cal :inbox))
+                                       (plist-get cal :files))))
     (org-caldav-autosync-when-idle org-caldav-autosync-idle-seconds)))
 
 (defun org-caldav-autosync-when-idle (secs)
