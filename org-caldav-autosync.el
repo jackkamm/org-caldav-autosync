@@ -49,7 +49,7 @@ occurs."
 
 (defun org-caldav-autosync-after-save-hook ()
   (when (cl-some (lambda (x) (when x (file-equal-p x (buffer-file-name))))
-                 (cl-loop for cal in (append `(:inbox ,org-caldav-inbox
+                 (cl-loop for cal in (cons `(:inbox ,org-caldav-inbox
                                                       :files ,org-caldav-files)
                                              org-caldav-calendars)
                           append (cons (org-caldav-inbox-file
