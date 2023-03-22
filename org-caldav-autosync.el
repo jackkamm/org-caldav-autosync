@@ -27,6 +27,8 @@
 
 ;;; Code:
 
+(require 'org-caldav)
+
 (defcustom org-caldav-autosync-idle-seconds 300
   "Idle time for `org-caldav-autosync-mode'."
   :type 'number)
